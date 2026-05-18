@@ -972,8 +972,8 @@ Example formats I can parse:
 
       <!-- API Integration Mode -->
       <div class="harvest-content active" id="api-content">
-        <div class="harvest-setup" id="harvest-setup">
-          <div class="harvest-setup-title">Connect to Harvest</div>
+        <div class="harvest-setup" id="harvest-setup" style="background: white; padding: 24px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+          <div class="harvest-setup-title" style="font-size: 1.3rem; margin-bottom: 20px; color: var(--navy-dark);">🔌 Connect to Harvest API</div>
           <div class="harvest-input-group">
             <label class="harvest-label">Harvest Account ID</label>
             <input type="text" class="harvest-input" id="harvest-account-id" placeholder="e.g., 1234567">
@@ -1016,6 +1016,14 @@ Example formats I can parse:
               <div style="min-width: 120px;">
                 <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--navy-mid); margin-bottom: 4px;">&nbsp;</label>
                 <button class="harvest-refresh-btn" onclick="refreshHarvestData()" style="background: var(--green); width: 100%;">🔄 Refresh</button>
+              </div>
+              <div style="min-width: 140px;">
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--navy-mid); margin-bottom: 4px;">&nbsp;</label>
+                <button class="harvest-refresh-btn" onclick="showManageDBAs()" style="background: var(--cyan); width: 100%;">👥 Manage DBAs</button>
+              </div>
+              <div style="min-width: 120px;">
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--navy-mid); margin-bottom: 4px;">&nbsp;</label>
+                <button class="harvest-refresh-btn" onclick="showHarvestSettings()" style="background: var(--navy-mid); width: 100%;">⚙️ Settings</button>
               </div>
             </div>
           </div>
@@ -1433,11 +1441,18 @@ function renderClients() {
 
 // Tab switching
 function switchTab(tab) {
+  console.log('Switching to tab:', tab);
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
   
   event.target.classList.add('active');
-  document.getElementById(`${tab}-tab`).classList.add('active');
+  const targetTab = document.getElementById(`${tab}-tab`);
+  if (targetTab) {
+    targetTab.classList.add('active');
+    console.log('Activated tab:', `${tab}-tab`);
+  } else {
+    console.error('Tab not found:', `${tab}-tab`);
+  }
 }
 
 // Toggle task completion
@@ -1686,6 +1701,17 @@ function closeDBAModal() {
   document.getElementById('dba-modal').classList.remove('active');
 }
 
+function showHarvestSettings() {
+  // Show setup form, hide data view
+  document.getElementById('harvest-setup').style.display = 'block';
+  document.getElementById('harvest-data').style.display = 'none';
+  
+  // Populate fields with current values
+  document.getElementById('harvest-account-id').value = harvestData.accountId || '';
+  document.getElementById('harvest-token').value = harvestData.token || '';
+  document.getElementById('harvest-dbas').value = harvestData.dbas.join(', ');
+}
+
 // Harvest Integration
 let harvestMode = 'api'; // 'api' or 'csv'
 let harvestData = {
@@ -1742,6 +1768,7 @@ function loadCustomRange() {
 }
 
 function switchHarvestMode(mode) {
+  console.log('Switching Harvest mode to:', mode);
   harvestMode = mode;
   
   // Update toggle buttons
@@ -1749,8 +1776,14 @@ function switchHarvestMode(mode) {
   document.getElementById('csv-toggle').classList.toggle('active', mode === 'csv');
   
   // Show/hide content
-  document.getElementById('api-content').classList.toggle('active', mode === 'api');
-  document.getElementById('csv-content').classList.toggle('active', mode === 'csv');
+  const apiContent = document.getElementById('api-content');
+  const csvContent = document.getElementById('csv-content');
+  
+  apiContent.classList.toggle('active', mode === 'api');
+  csvContent.classList.toggle('active', mode === 'csv');
+  
+  console.log('API content visible:', apiContent.classList.contains('active'));
+  console.log('CSV content visible:', csvContent.classList.contains('active'));
 }
 
 async function connectHarvest() {
