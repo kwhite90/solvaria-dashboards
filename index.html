@@ -963,7 +963,7 @@ Example formats I can parse:
   <div id="time-tab" class="tab-content">
     <div class="harvest-section" style="margin: 0;">
       <div class="harvest-header">
-        <div class="harvest-title">⏱️ Harvest Time Tracking</div>
+        <div class="harvest-title">⏱️ Harvest Time Tracking <span style="font-size: 0.7rem; color: var(--gray-mid);">(v2.1)</span></div>
         <div class="harvest-toggle">
           <button class="toggle-btn active" id="api-toggle" onclick="switchHarvestMode('api')">API Integration</button>
           <button class="toggle-btn" id="csv-toggle" onclick="switchHarvestMode('csv')">CSV Import</button>
@@ -1762,8 +1762,20 @@ function loadCustomRange() {
     return;
   }
   
+  // Show what we're setting
+  alert('Setting custom range:\nFrom: ' + fromDate + '\nTo: ' + toDate);
+  
   customDateRange = { from: fromDate, to: toDate };
   currentWeekOffset = 0; // Reset week offset when using custom range
+  
+  // Immediately update the display with custom dates (fix timezone)
+  const from = new Date(fromDate + 'T12:00:00'); // Add time to avoid timezone shift
+  const to = new Date(toDate + 'T12:00:00');
+  const options = { month: 'short', day: 'numeric', timeZone: 'UTC' };
+  const fromFormatted = from.toLocaleDateString('en-US', options);
+  const toFormatted = to.toLocaleDateString('en-US', options);
+  document.getElementById('harvest-week').textContent = `${fromFormatted} - ${toFormatted}`;
+  
   refreshHarvestData();
 }
 
@@ -1862,6 +1874,11 @@ async function refreshHarvestData() {
     });
     
     data.time_entries.forEach(entry => {
+      // Only count billable hours (field name is "billable" not "is_billable")
+      if (!entry.billable) {
+        return;
+      }
+      
       const userName = entry.user.name;
       // Check if this user matches any of our tracked DBAs
       harvestData.dbas.forEach(dba => {
@@ -1967,10 +1984,10 @@ function displayHarvestHours(hoursMap, fromDate, toDate, isCsv = false) {
   
   // Update week display and total hours for API mode
   if (!isCsv && fromDate && toDate) {
-    const from = new Date(fromDate);
-    const to = new Date(toDate);
+    const from = new Date(fromDate + 'T12:00:00');
+    const to = new Date(toDate + 'T12:00:00');
     
-    const options = { month: 'short', day: 'numeric' };
+    const options = { month: 'short', day: 'numeric', timeZone: 'UTC' };
     const fromFormatted = from.toLocaleDateString('en-US', options);
     const toFormatted = to.toLocaleDateString('en-US', options);
     
