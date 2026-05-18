@@ -1017,8 +1017,14 @@ Example formats I can parse:
             </div>
           </div>
           
-          <div style="font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 12px; text-align: center;">
-            <span id="harvest-week"></span>
+          <div style="text-align: center; margin-bottom: 20px;">
+            <div style="font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 8px;">
+              <span id="harvest-week"></span>
+            </div>
+            <div style="background: var(--cyan); color: var(--white); padding: 16px 24px; border-radius: 8px; display: inline-block;">
+              <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Total Hours</div>
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2.5rem; font-weight: 700;" id="harvest-total-hours">0.0</div>
+            </div>
           </div>
           
           <div id="harvest-hours-list">
@@ -1837,13 +1843,16 @@ function displayHarvestHours(hoursMap, fromDate, toDate, isCsv = false) {
   // Sort by hours (highest first)
   const sorted = Object.entries(hoursMap).sort((a, b) => b[1] - a[1]);
   
+  // Calculate total hours
+  const totalHours = sorted.reduce((sum, [name, hours]) => sum + hours, 0);
+  
   let html = '';
   sorted.forEach(([name, hours]) => {
     html += `
       <div class="dba-hours-card">
         <div class="dba-info">
           <div class="dba-name">${name}</div>
-          <div class="dba-details">${hours > 0 ? 'Active this week' : 'No hours logged'}</div>
+          <div class="dba-details">${hours > 0 ? 'Active this period' : 'No hours logged'}</div>
         </div>
         <div class="dba-hours">
           <div class="hours-number">${hours.toFixed(1)}</div>
@@ -1855,7 +1864,7 @@ function displayHarvestHours(hoursMap, fromDate, toDate, isCsv = false) {
   
   list.innerHTML = html;
   
-  // Update week display for API mode
+  // Update week display and total hours for API mode
   if (!isCsv && fromDate && toDate) {
     const from = new Date(fromDate);
     const to = new Date(toDate);
@@ -1866,6 +1875,7 @@ function displayHarvestHours(hoursMap, fromDate, toDate, isCsv = false) {
     
     const weekText = `${fromFormatted} - ${toFormatted}`;
     document.getElementById('harvest-week').textContent = weekText;
+    document.getElementById('harvest-total-hours').textContent = totalHours.toFixed(1);
   }
 }
 
