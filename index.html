@@ -966,6 +966,7 @@
   <!-- Tabs -->
   <div class="tabs">
     <button class="tab active" onclick="switchTab('clients')">Action Items</button>
+    <button class="tab" onclick="switchTab('meetings')">Recurring Meetings</button>
     <button class="tab" onclick="switchTab('metrics')">Client Metrics</button>
     <button class="tab" onclick="switchTab('time')">Time Tracking</button>
     <button class="tab" onclick="switchTab('capacity')">Capacity Planning</button>
@@ -1048,6 +1049,703 @@
         <h3 style="margin: 0 0 16px 0; color: var(--green); font-size: 1.1rem;">✅ Done</h3>
         <div id="completed-tasks-list">
           <div style="color: var(--gray-mid); padding: 12px; text-align: center;">No completed tasks</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recurring Meetings Tab -->
+  <div id="meetings-tab" class="tab-content">
+    <div class="dashboard-section">
+      <div class="section-header" style="margin-bottom: 24px;">
+        <h2 class="section-title">📅 Recurring Client Meetings Analysis</h2>
+        <p style="color: var(--gray-mid); margin: 8px 0 0 0;">Meeting load across 36-client portfolio • Excluding time/invoice reporting</p>
+      </div>
+
+      <!-- Portfolio Overview Cards -->
+      <div class="summary-grid" style="margin-bottom: 30px;">
+        <div class="summary-card">
+          <div class="summary-label">Total Book of Business</div>
+          <div class="summary-value">36</div>
+          <div class="summary-sublabel">clients across 2 account managers</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Recurring Meetings</div>
+          <div class="summary-value">21</div>
+          <div class="summary-sublabel">12 Pamela + 9 Angel</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">Combined Load</div>
+          <div class="summary-value">14-15h</div>
+          <div class="summary-sublabel">Current weekly meeting time</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">After Optimization</div>
+          <div class="summary-value">11-12h</div>
+          <div class="summary-sublabel">-3h potential savings</div>
+        </div>
+      </div>
+
+      <!-- AM Comparison -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; margin-bottom: 30px;">
+        <div style="background: white; border-radius: 8px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #8B72E8;">
+          <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 16px;">Pamela's Portfolio</div>
+          <div style="display: grid; gap: 12px;">
+            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--gray-border);">
+              <span style="color: var(--gray-mid);">Total Clients</span>
+              <span style="font-weight: 700; color: var(--navy);">12</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--gray-border);">
+              <span style="color: var(--gray-mid);">Weekly Load</span>
+              <span style="font-weight: 700; color: var(--navy);">12-13h</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--gray-border);">
+              <span style="color: var(--gray-mid);">After Consolidation</span>
+              <span style="font-weight: 700; color: var(--green);">9-10h</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+              <span style="color: var(--gray-mid);">Profile</span>
+              <span style="font-weight: 600; color: var(--navy); font-size: 0.9rem;">Enterprise</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: white; border-radius: 8px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid var(--cyan);">
+          <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--navy); margin-bottom: 16px;">Angel's Portfolio</div>
+          <div style="display: grid; gap: 12px;">
+            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--gray-border);">
+              <span style="color: var(--gray-mid);">Total Clients</span>
+              <span style="font-weight: 700; color: var(--navy);">9</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--gray-border);">
+              <span style="color: var(--gray-mid);">Weekly Load</span>
+              <span style="font-weight: 700; color: var(--navy);">2h</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--gray-border);">
+              <span style="color: var(--gray-mid);">Optimization Needed</span>
+              <span style="font-weight: 600; color: var(--green); font-size: 0.9rem;">None</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; padding: 8px 0;">
+              <span style="color: var(--gray-mid);">Profile</span>
+              <span style="font-weight: 600; color: var(--navy); font-size: 0.9rem;">SMB/MMT365</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Consolidation Opportunities -->
+      <div style="background: white; border: 2px solid var(--amber); border-radius: 8px; padding: 24px; margin-bottom: 30px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <div>
+            <h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy); margin-bottom: 4px;">Pamela's Consolidation Opportunities</h3>
+            <p style="color: var(--gray-mid); font-size: 0.9rem;">Streamline meeting structure for efficiency</p>
+          </div>
+          <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--amber);">Save 2.5-3h/week</div>
+        </div>
+
+        <!-- Hilb Group -->
+        <div style="background: var(--gray-light); border-radius: 6px; padding: 20px; margin-bottom: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <div style="font-weight: 700; color: var(--navy); font-size: 1.1rem;">Hilb Group</div>
+            <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--amber);">~90 min/week</div>
+          </div>
+          <div style="margin-bottom: 12px;">
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--gray-mid); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Current: 3 meetings/week</div>
+            <ul style="margin: 0; padding-left: 20px; color: var(--navy-mid); font-size: 0.9rem;">
+              <li>Stand-Up with Fawn (Tuesdays, 30-60 min)</li>
+              <li>Sprint Planning with Fawn (alternate Tuesdays, 60 min)</li>
+              <li>BA Team Project Sync (Tuesdays, 60 min)</li>
+            </ul>
+          </div>
+          <div style="padding-top: 12px; border-top: 1px solid var(--gray-border);">
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Proposed: 2 meetings</div>
+            <ul style="margin: 0; padding-left: 20px; color: var(--navy-mid); font-size: 0.9rem;">
+              <li>Weekly Project Sync (60 min) - combines stand-up + BA sync</li>
+              <li>Bi-weekly Sprint Planning (30 min) - focused planning only</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- FirstKey Homes -->
+        <div style="background: var(--gray-light); border-radius: 6px; padding: 20px; margin-bottom: 16px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <div style="font-weight: 700; color: var(--navy); font-size: 1.1rem;">FirstKey Homes</div>
+            <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--amber);">~45 min/week</div>
+          </div>
+          <div style="margin-bottom: 12px;">
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--gray-mid); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Current: 2-3 meetings/week</div>
+            <ul style="margin: 0; padding-left: 20px; color: var(--navy-mid); font-size: 0.9rem;">
+              <li>SQL Team Check-Point (Tuesdays, 60 min)</li>
+              <li>Azure/DevOps ck point (Thursdays, 30 min)</li>
+              <li>Azure Landing Zone bi-weekly (Wednesdays, 60 min)</li>
+            </ul>
+          </div>
+          <div style="padding-top: 12px; border-top: 1px solid var(--gray-border);">
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Proposed: 2 meetings</div>
+            <ul style="margin: 0; padding-left: 20px; color: var(--navy-mid); font-size: 0.9rem;">
+              <li>Weekly Technical Sync (45 min) - combines SQL + Azure/DevOps</li>
+              <li>Bi-weekly Azure Landing Zone (60 min) - project-specific</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- AGA -->
+        <div style="background: var(--gray-light); border-radius: 6px; padding: 20px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <div style="font-weight: 700; color: var(--navy); font-size: 1.1rem;">AGA Service Company</div>
+            <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--amber);">~30 min/week</div>
+          </div>
+          <div style="margin-bottom: 12px;">
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--gray-mid); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Current: 2 meetings/week</div>
+            <ul style="margin: 0; padding-left: 20px; color: var(--navy-mid); font-size: 0.9rem;">
+              <li>AGA - Tommy & Team (Tuesdays, 30 min)</li>
+              <li>Fusion Check Point (Thursdays, 60 min)</li>
+            </ul>
+          </div>
+          <div style="padding-top: 12px; border-top: 1px solid var(--gray-border);">
+            <div style="font-size: 0.75rem; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">Proposed: 1 meeting/week</div>
+            <ul style="margin: 0; padding-left: 20px; color: var(--navy-mid); font-size: 0.9rem;">
+              <li>Weekly Fusion & Platform Sync (60 min) - combined agenda</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div style="display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;">
+        <button class="filter-btn active" data-filter="all" style="padding: 10px 20px; background: var(--navy); color: white; border: none; border-radius: 4px; font-weight: 600; cursor: pointer;">All Clients (21)</button>
+        <button class="filter-btn" data-filter="pamela" style="padding: 10px 20px; background: white; color: var(--navy); border: 2px solid #8B72E8; border-radius: 4px; font-weight: 600; cursor: pointer;">Pamela (12)</button>
+        <button class="filter-btn" data-filter="angel" style="padding: 10px 20px; background: white; color: var(--navy); border: 2px solid var(--cyan); border-radius: 4px; font-weight: 600; cursor: pointer;">Angel (9)</button>
+        <button class="filter-btn" data-filter="weekly" style="padding: 10px 20px; background: white; color: var(--navy); border: 2px solid var(--gray-border); border-radius: 4px; font-weight: 600; cursor: pointer;">Weekly</button>
+        <button class="filter-btn" data-filter="monthly" style="padding: 10px 20px; background: white; color: var(--navy); border: 2px solid var(--gray-border); border-radius: 4px; font-weight: 600; cursor: pointer;">Monthly</button>
+      </div>
+
+      <!-- Client List -->
+      <div id="meetings-client-grid" class="client-grid" style="display: grid; gap: 16px;">
+        
+        <!-- PAMELA'S CLIENTS (12 total) -->
+        
+        <!-- 1. Hilb Group -->
+        <div class="meeting-client-card" data-am="pamela" data-frequency="weekly" onclick="showMeetingDetails('Hilb Group')" style="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #8B72E8; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'"">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">Hilb Group</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">Data & Dashboard Support, Portal Development</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #f3f0ff; color: #8B72E8; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">PAMELA</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">3</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">2-2.5h</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">WEEKLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fee2e2; color: #dc2626; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">WEEKLY</span>
+            </div>
+            <div>
+              <span style="display: block; padding: 6px 12px; background: #ffedd5; color: #ea580c; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-align: center;">CONSOLIDATE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. FirstKey Homes -->
+        <div class="meeting-client-card" data-am="pamela" data-frequency="weekly" onclick="showMeetingDetails('FirstKey Homes')" style="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #8B72E8; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'"">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">FirstKey Homes</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">Database Support, Fabric/PowerBI, Azure Landing Zone</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #f3f0ff; color: #8B72E8; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">PAMELA</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">3-4</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">2-2.5h</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">WEEKLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fee2e2; color: #dc2626; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">WEEKLY</span>
+            </div>
+            <div>
+              <span style="display: block; padding: 6px 12px; background: #ffedd5; color: #ea580c; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-align: center;">CONSOLIDATE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Allianz -->
+        <div class="meeting-client-card" data-am="pamela" data-frequency="weekly" onclick="showMeetingDetails('Allianz (AGCS/ATA)')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #8B72E8;">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">Allianz (AGCS/ATA)</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">FileNet Admin, Change Review Board, Multiple SOWs</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #f3f0ff; color: #8B72E8; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">PAMELA</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">2+</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">1.5h</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">WEEKLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fee2e2; color: #dc2626; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">WEEKLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 4. AGA Service Company -->
+        <div class="meeting-client-card" data-am="pamela" data-frequency="weekly" onclick="showMeetingDetails('AGA Service Company')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #8B72E8;">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">AGA Service Company</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">Fusion Core Platform Support</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #f3f0ff; color: #8B72E8; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">PAMELA</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">2</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">1.5h</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">WEEKLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fee2e2; color: #dc2626; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">WEEKLY</span>
+            </div>
+            <div>
+              <span style="display: block; padding: 6px 12px; background: #ffedd5; color: #ea580c; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-align: center;">CONSOLIDATE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Estes Forwarding Worldwide -->
+        <div class="meeting-client-card" data-am="pamela" data-frequency="weekly" onclick="showMeetingDetails('Estes Forwarding Worldwide')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #8B72E8;">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">Estes Forwarding Worldwide</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">Database Support</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #f3f0ff; color: #8B72E8; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">PAMELA</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">1</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">30m</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">WEEKLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fee2e2; color: #dc2626; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">WEEKLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 6. CRAC -->
+        <div class="meeting-client-card" data-am="pamela" data-frequency="weekly" onclick="showMeetingDetails('Capital Region Airport Commission')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #8B72E8;">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">Capital Region Airport Commission</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">Oracle DBA Services, Functional Support</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #f3f0ff; color: #8B72E8; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">PAMELA</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">1-2</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">30m</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">WEEKLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fee2e2; color: #dc2626; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">WEEKLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 7. APEX -->
+        <div class="meeting-client-card" data-am="pamela" data-frequency="weekly" onclick="showMeetingDetails('APEX')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #8B72E8;">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">APEX</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">SQL Server Support, Oracle Re-platform</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #f3f0ff; color: #8B72E8; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">PAMELA</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">1</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">30m</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">WEEKLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fee2e2; color: #dc2626; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">WEEKLY (Email)</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 8. Home Care Delivered -->
+        <div class="meeting-client-card" data-am="pamela" data-frequency="biweekly" onclick="showMeetingDetails('Home Care Delivered')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #8B72E8;">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">Home Care Delivered</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">SQL Server Support, Linux Support</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #f3f0ff; color: #8B72E8; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">PAMELA</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">2</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">50m</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">BI-WEEKLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #ffedd5; color: #ea580c; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">BI-WEEKLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 9. Accessia Health -->
+        <div class="meeting-client-card" data-am="pamela" data-frequency="monthly" onclick="showMeetingDetails('Accessia Health')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #8B72E8;">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">Accessia Health</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">Executive Dashboard, SSIS/SQL Support, PSI003 Project</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #f3f0ff; color: #8B72E8; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">PAMELA</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">2</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">1.5h</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MONTHLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fef9c3; color: #ca8a04; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">MONTHLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 10. C&K Auto Parts -->
+        <div class="meeting-client-card" data-am="pamela" data-frequency="monthly" onclick="showMeetingDetails('C&K Auto Parts')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #8B72E8;">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">C&K Auto Parts</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">Monthly Support</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #f3f0ff; color: #8B72E8; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">PAMELA</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">1</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">1h</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MONTHLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fef9c3; color: #ca8a04; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">MONTHLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 11. Mylar -->
+        <div class="meeting-client-card" data-am="pamela" data-frequency="monthly" onclick="showMeetingDetails('Mylar Specialty Films')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #8B72E8;">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">Mylar Specialty Films</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">Multiplatform Database Support</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #f3f0ff; color: #8B72E8; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">PAMELA</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">1</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">30m</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MONTHLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fef9c3; color: #ca8a04; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">MONTHLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 12. Weinstein Properties -->
+        <div class="meeting-client-card" data-am="pamela" data-frequency="quarterly" onclick="showMeetingDetails('Weinstein Properties')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid #8B72E8;">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">Weinstein Properties</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">Multi-platform Support, Quarterly Patching</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #f3f0ff; color: #8B72E8; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">PAMELA</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">2</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">4h</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">QUARTERLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #ecfccb; color: #65a30d; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">QUARTERLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- ANGEL'S CLIENTS (9 total) -->
+        
+        <!-- 13. Yes Energy -->
+        <div class="meeting-client-card" data-am="angel" data-frequency="weekly" onclick="showMeetingDetails('Yes Energy')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid var(--cyan);">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">Yes Energy</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">MMT365 Services</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #cffafe; color: var(--cyan); border-radius: 4px; font-size: 0.75rem; font-weight: 700;">ANGEL</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">1</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">30m</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">WEEKLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fee2e2; color: #dc2626; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">WEEKLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 14. County of Roanoke -->
+        <div class="meeting-client-card" data-am="angel" data-frequency="weekly" onclick="showMeetingDetails('County of Roanoke')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid var(--cyan);">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">County of Roanoke</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">MMT365 Services</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #cffafe; color: var(--cyan); border-radius: 4px; font-size: 0.75rem; font-weight: 700;">ANGEL</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">1</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">30m</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">WEEKLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fee2e2; color: #dc2626; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">WEEKLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 15. IPS Corporation -->
+        <div class="meeting-client-card" data-am="angel" data-frequency="biweekly" onclick="showMeetingDetails('IPS Corporation')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid var(--cyan);">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">IPS Corporation</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">MMT365 Silver</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #cffafe; color: var(--cyan); border-radius: 4px; font-size: 0.75rem; font-weight: 700;">ANGEL</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">1</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">30m</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">BI-WEEKLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #ffedd5; color: #ea580c; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">BI-WEEKLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 16. Ellsworth Adhesives -->
+        <div class="meeting-client-card" data-am="angel" data-frequency="monthly" onclick="showMeetingDetails('Ellsworth Adhesives')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid var(--cyan);">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">Ellsworth Adhesives</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">MMT365 Silver</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #cffafe; color: var(--cyan); border-radius: 4px; font-size: 0.75rem; font-weight: 700;">ANGEL</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">1</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">30m</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MONTHLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fef9c3; color: #ca8a04; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">MONTHLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 17. Gaming Laboratories International -->
+        <div class="meeting-client-card" data-am="angel" data-frequency="monthly" onclick="showMeetingDetails('Gaming Laboratories International')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid var(--cyan);">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">Gaming Laboratories International</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">MMT365 Services</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #cffafe; color: var(--cyan); border-radius: 4px; font-size: 0.75rem; font-weight: 700;">ANGEL</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">1</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">30m</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MONTHLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fef9c3; color: #ca8a04; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">MONTHLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 18. Cadence Inc -->
+        <div class="meeting-client-card" data-am="angel" data-frequency="monthly" onclick="showMeetingDetails('Cadence Inc.')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid var(--cyan);">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">Cadence Inc.</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">MMT365 Bronze</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #cffafe; color: var(--cyan); border-radius: 4px; font-size: 0.75rem; font-weight: 700;">ANGEL</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">1</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">30m</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MONTHLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fef9c3; color: #ca8a04; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">MONTHLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 19. Coastal Pacific Food Distributors -->
+        <div class="meeting-client-card" data-am="angel" data-frequency="monthly" onclick="showMeetingDetails('Coastal Pacific Food Distributors')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid var(--cyan);">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">Coastal Pacific Food Distributors</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">24/7 Support</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #cffafe; color: var(--cyan); border-radius: 4px; font-size: 0.75rem; font-weight: 700;">ANGEL</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">1</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">30m</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MONTHLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fef9c3; color: #ca8a04; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">MONTHLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 20. Shades of Light -->
+        <div class="meeting-client-card" data-am="angel" data-frequency="monthly" onclick="showMeetingDetails('Shades of Light')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid var(--cyan);">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">Shades of Light</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">Silver MMT365</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #cffafe; color: var(--cyan); border-radius: 4px; font-size: 0.75rem; font-weight: 700;">ANGEL</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">1</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">30m</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MONTHLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fef9c3; color: #ca8a04; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">MONTHLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- 21. In-Shape Solutions (ISFF) -->
+        <div class="meeting-client-card" data-am="angel" data-frequency="monthly" onclick="showMeetingDetails('In-Shape Solutions (ISFF)')" style="background: white; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.boxShadow='0 4px 16px rgba(0,0,0,0.15)'" onmouseout="this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'" data-clickable="true" xstyle="background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 4px solid var(--cyan);">
+          <div style="display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 150px; gap: 16px; align-items: center;">
+            <div>
+              <h3 style="font-weight: 700; color: var(--navy); margin-bottom: 4px;">In-Shape Solutions (ISFF)</h3>
+              <p style="font-size: 0.85rem; color: var(--gray-mid); margin-bottom: 6px;">MMT365 Ongoing Support Plan</p>
+              <span style="display: inline-block; padding: 4px 10px; background: #cffafe; color: var(--cyan); border-radius: 4px; font-size: 0.75rem; font-weight: 700;">ANGEL</span>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 2rem; font-weight: 700; color: var(--navy);">1</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MEETINGS</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 700; color: var(--navy);">30m</div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 600;">MONTHLY</div>
+            </div>
+            <div style="text-align: center;">
+              <span style="display: inline-block; padding: 6px 12px; background: #fef9c3; color: #ca8a04; border-radius: 4px; font-size: 0.75rem; font-weight: 700;">MONTHLY</span>
+            </div>
+            <div></div>
+          </div>
+        </div>
+
+        <!-- Portfolio Summary -->
+        <div style="background: var(--gray-light); border-radius: 8px; padding: 24px; margin-top: 24px; grid-column: 1 / -1;">
+          <h3 style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--navy); margin-bottom: 16px;">📊 Complete Portfolio Summary</h3>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+            <div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;">Pamela's Load</div>
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--navy);">12-13h/week</div>
+              <div style="font-size: 0.8rem; color: var(--navy-mid); margin-top: 2px;">12 clients with recurring meetings</div>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;">Angel's Load</div>
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--navy);">2h/week</div>
+              <div style="font-size: 0.8rem; color: var(--navy-mid); margin-top: 2px;">9 clients with recurring meetings</div>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;">Combined Current</div>
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--red);">14-15h/week</div>
+              <div style="font-size: 0.8rem; color: var(--navy-mid); margin-top: 2px;">21 of 36 clients</div>
+            </div>
+            <div>
+              <div style="font-size: 0.75rem; color: var(--gray-mid); font-weight: 700; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 1px;">After Consolidation</div>
+              <div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--green);">11-12h/week</div>
+              <div style="font-size: 0.8rem; color: var(--navy-mid); margin-top: 2px;">2.5-3h savings potential</div>
+            </div>
+          </div>
+          <div style="margin-top: 20px; padding-top: 16px; border-top: 2px solid var(--gray-border);">
+            <p style="margin: 0; color: var(--navy-mid); font-size: 0.95rem; line-height: 1.6;">
+              <strong style="color: var(--navy);">Key Insight:</strong> Portfolio shows 83% imbalance with Pamela carrying majority of meeting load. Angel has capacity for 3-4 more enterprise clients. Combined optimized load of 11-12h/week is sustainable for one CSM managing both portfolios.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -6119,6 +6817,280 @@ window.addEventListener('DOMContentLoaded', () => {
   startPeriodicSync();
 });
 
+// Recurring Meetings Tab - Filter Functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const meetingCards = document.querySelectorAll('.meeting-client-card');
+  
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Update active state
+      filterButtons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.style.background = 'white';
+        btn.style.color = 'var(--navy)';
+      });
+      
+      this.classList.add('active');
+      this.style.background = 'var(--navy)';
+      this.style.color = 'white';
+      
+      const filter = this.dataset.filter;
+      
+      // Filter cards
+      meetingCards.forEach(card => {
+        const am = card.dataset.am;
+        const frequency = card.dataset.frequency;
+        
+        let show = false;
+        
+        if (filter === 'all') {
+          show = true;
+        } else if (filter === 'pamela' || filter === 'angel') {
+          show = am === filter;
+        } else {
+          show = frequency === filter;
+        }
+        
+        card.style.display = show ? 'block' : 'none';
+      });
+    });
+  });
+});
+
+// Client Meeting Details Modal
+const clientMeetingData = {
+  'Hilb Group': {
+    am: 'Pamela Craven',
+    current: [
+      { name: 'Stand-Up with Fawn', schedule: 'Tuesdays', duration: '30-60 min' },
+      { name: 'Sprint Planning with Fawn', schedule: 'Alternate Tuesdays', duration: '60 min' },
+      { name: 'BA Team Project Sync', schedule: 'Tuesdays', duration: '60 min' }
+    ],
+    proposed: [
+      { name: 'Weekly Project Sync', schedule: 'Weekly', duration: '60 min', note: 'Combines stand-up + BA sync' },
+      { name: 'Bi-weekly Sprint Planning', schedule: 'Every 2 weeks', duration: '30 min', note: 'Focused planning only' }
+    ],
+    savings: '~90 min/week'
+  },
+  'FirstKey Homes': {
+    am: 'Pamela Craven',
+    current: [
+      { name: 'SQL Team Check-Point', schedule: 'Tuesdays', duration: '60 min' },
+      { name: 'Azure/DevOps ck point', schedule: 'Thursdays', duration: '30 min' },
+      { name: 'Azure Landing Zone', schedule: 'Wednesdays (bi-weekly)', duration: '60 min' }
+    ],
+    proposed: [
+      { name: 'Weekly Technical Sync', schedule: 'Weekly', duration: '45 min', note: 'Combines SQL + Azure/DevOps' },
+      { name: 'Bi-weekly Azure Landing Zone', schedule: 'Every 2 weeks', duration: '60 min', note: 'Project-specific' }
+    ],
+    savings: '~45 min/week'
+  },
+  'Allianz (AGCS/ATA)': {
+    am: 'Pamela Craven',
+    current: [
+      { name: 'FileNet Admin Meeting', schedule: 'Weekly', duration: '60 min' },
+      { name: 'Change Review Board', schedule: 'Weekly', duration: '30+ min' }
+    ],
+    proposed: null
+  },
+  'AGA Service Company': {
+    am: 'Pamela Craven',
+    current: [
+      { name: 'AGA - Tommy & Team', schedule: 'Tuesdays', duration: '30 min' },
+      { name: 'Fusion Check Point', schedule: 'Thursdays', duration: '60 min' }
+    ],
+    proposed: [
+      { name: 'Weekly Fusion & Platform Sync', schedule: 'Weekly', duration: '60 min', note: 'Combined agenda' }
+    ],
+    savings: '~30 min/week'
+  },
+  'Estes Forwarding Worldwide': {
+    am: 'Pamela Craven',
+    current: [
+      { name: 'Weekly Check-In', schedule: 'Weekly', duration: '30 min' }
+    ],
+    proposed: null
+  },
+  'Capital Region Airport Commission': {
+    am: 'Pamela Craven',
+    current: [
+      { name: 'Oracle DBA Services Meeting', schedule: 'Weekly', duration: '30 min' }
+    ],
+    proposed: null
+  },
+  'APEX': {
+    am: 'Pamela Craven',
+    current: [
+      { name: 'Weekly Status Email Update', schedule: 'Weekly', duration: '30 min', note: 'Email format' }
+    ],
+    proposed: null
+  },
+  'Home Care Delivered': {
+    am: 'Pamela Craven',
+    current: [
+      { name: 'SQL Server Support Check-In', schedule: 'Bi-weekly', duration: '30 min' },
+      { name: 'Linux Platform Review', schedule: 'Bi-weekly', duration: '20 min' }
+    ],
+    proposed: null
+  },
+  'Accessia Health': {
+    am: 'Pamela Craven',
+    current: [
+      { name: 'Executive Dashboard Review', schedule: 'Monthly', duration: '60 min' },
+      { name: 'PSI003 Project Sync', schedule: 'Monthly', duration: '30 min' }
+    ],
+    proposed: null
+  },
+  'C&K Auto Parts': {
+    am: 'Pamela Craven',
+    current: [
+      { name: 'Monthly Support Review', schedule: 'Monthly', duration: '60 min' }
+    ],
+    proposed: null
+  },
+  'Mylar Specialty Films': {
+    am: 'Pamela Craven',
+    current: [
+      { name: 'Multiplatform Database Review', schedule: 'Monthly', duration: '30 min' }
+    ],
+    proposed: null
+  },
+  'Weinstein Properties': {
+    am: 'Pamela Craven',
+    current: [
+      { name: 'Quarterly SQL Patching Session', schedule: 'Quarterly', duration: '2 hours' },
+      { name: 'Quarterly Oracle Patching Session', schedule: 'Quarterly', duration: '2 hours' }
+    ],
+    proposed: null
+  },
+  'Yes Energy': {
+    am: 'Angel Smith',
+    current: [
+      { name: 'Weekly Status Meeting', schedule: 'Thursdays', duration: '30 min' }
+    ],
+    proposed: null
+  },
+  'County of Roanoke': {
+    am: 'Angel Smith',
+    current: [
+      { name: 'Weekly Check-In', schedule: 'Fridays', duration: '30 min' }
+    ],
+    proposed: null
+  },
+  'IPS Corporation': {
+    am: 'Angel Smith',
+    current: [
+      { name: 'Bi-Weekly Status Meeting', schedule: 'Every 2 weeks (Mondays)', duration: '30 min' }
+    ],
+    proposed: null
+  },
+  'Ellsworth Adhesives': {
+    am: 'Angel Smith',
+    current: [
+      { name: 'Monthly Review', schedule: 'First Friday of month', duration: '30 min' }
+    ],
+    proposed: null
+  },
+  'Gaming Laboratories International': {
+    am: 'Angel Smith',
+    current: [
+      { name: 'Monthly Meeting', schedule: 'Thursdays', duration: '30 min' }
+    ],
+    proposed: null
+  },
+  'Cadence Inc.': {
+    am: 'Angel Smith',
+    current: [
+      { name: 'Monthly Meeting', schedule: 'Fridays', duration: '30 min' }
+    ],
+    proposed: null
+  },
+  'Coastal Pacific Food Distributors': {
+    am: 'Angel Smith',
+    current: [
+      { name: 'Monthly Meeting', schedule: 'Tuesdays', duration: '30 min' }
+    ],
+    proposed: null
+  },
+  'Shades of Light': {
+    am: 'Angel Smith',
+    current: [
+      { name: 'Monthly Meeting', schedule: 'Thursdays', duration: '30 min' }
+    ],
+    proposed: null
+  },
+  'In-Shape Solutions (ISFF)': {
+    am: 'Angel Smith',
+    current: [
+      { name: 'Monthly Meeting', schedule: 'Fridays', duration: '30 min' }
+    ],
+    proposed: null
+  }
+};
+
+function showMeetingDetails(clientName) {
+  const modal = document.getElementById('client-meeting-modal');
+  const data = clientMeetingData[clientName];
+  
+  if (!data) return;
+  
+  document.getElementById('meeting-modal-client-name').textContent = clientName;
+  document.getElementById('meeting-modal-am').textContent = 'Account Manager: ' + data.am;
+  
+  let content = '';
+  
+  // Current meetings section
+  content += '<div style="margin-bottom: 24px;">';
+  content += '<h3 style="font-family: \'Barlow Condensed\', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--navy); margin-bottom: 12px;">Current Meeting Structure</h3>';
+  content += '<div style="background: var(--gray-light); padding: 16px; border-radius: 6px;">';
+  data.current.forEach(meeting => {
+    content += '<div style="padding: 12px 0; border-bottom: 1px solid var(--gray-border);">';
+    content += `<div style="font-weight: 600; color: var(--navy); margin-bottom: 4px;">${meeting.name}</div>`;
+    content += `<div style="font-size: 0.9rem; color: var(--gray-mid);">${meeting.schedule} • ${meeting.duration}</div>`;
+    if (meeting.note) {
+      content += `<div style="font-size: 0.85rem; color: var(--navy-mid); margin-top: 4px; font-style: italic;">${meeting.note}</div>`;
+    }
+    content += '</div>';
+  });
+  content += '</div>';
+  content += '</div>';
+  
+  // Proposed consolidation (if exists)
+  if (data.proposed) {
+    content += '<div style="background: #fffbeb; border: 2px solid var(--amber); border-radius: 6px; padding: 16px; margin-bottom: 16px;">';
+    content += '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">';
+    content += '<h3 style="font-family: \'Barlow Condensed\', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--navy); margin: 0;">💡 Proposed Consolidation</h3>';
+    content += `<div style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--amber);">${data.savings}</div>`;
+    content += '</div>';
+    data.proposed.forEach(meeting => {
+      content += '<div style="padding: 12px 0; border-bottom: 1px solid #fde68a;">';
+      content += `<div style="font-weight: 600; color: var(--navy); margin-bottom: 4px;">${meeting.name}</div>`;
+      content += `<div style="font-size: 0.9rem; color: var(--navy-mid);">${meeting.schedule} • ${meeting.duration}</div>`;
+      if (meeting.note) {
+        content += `<div style="font-size: 0.85rem; color: var(--navy-mid); margin-top: 4px; font-style: italic;">→ ${meeting.note}</div>`;
+      }
+      content += '</div>';
+    });
+    content += '</div>';
+  }
+  
+  document.getElementById('meeting-modal-content').innerHTML = content;
+  modal.style.display = 'block';
+}
+
+function closeMeetingModal() {
+  document.getElementById('client-meeting-modal').style.display = 'none';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+  const modal = document.getElementById('client-meeting-modal');
+  if (event.target === modal) {
+    closeMeetingModal();
+  }
+}
+
 </script>
 
 <!-- Manage DBAs Modal -->
@@ -6208,6 +7180,22 @@ window.addEventListener('DOMContentLoaded', () => {
     <div class="editor-buttons">
       <button class="save-btn" onclick="executeImport()" id="import-btn" style="display: none;">Import Selected</button>
       <button class="cancel-btn" onclick="closeImportModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Client Meeting Details Modal -->
+<div class="modal" id="client-meeting-modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(27,32,64,0.8); overflow: auto;">
+  <div class="modal-content" style="background: white; margin: 5% auto; padding: 0; border-radius: 8px; max-width: 700px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+    <div style="background: var(--navy); color: white; padding: 24px; border-radius: 8px 8px 0 0; display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <h2 id="meeting-modal-client-name" style="font-family: 'Barlow Condensed', sans-serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 4px;"></h2>
+        <p id="meeting-modal-am" style="font-size: 0.9rem; color: var(--cyan); font-weight: 600;"></p>
+      </div>
+      <button onclick="closeMeetingModal()" style="background: none; border: none; color: white; font-size: 2rem; cursor: pointer; padding: 0; line-height: 1;">&times;</button>
+    </div>
+    <div style="padding: 24px;">
+      <div id="meeting-modal-content"></div>
     </div>
   </div>
 </div>
